@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday Zarii 🎂</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #fff7fa, #ffe4ed);
+      font-family: 'Quicksand', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .container {
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      color: #e91e63;
+      font-size: 3em;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .photo {
+      width: 180px;
+      height: 180px;
+      margin: 20px auto;
+      background: url('zarmeen.jpg') center/cover no-repeat;
+      border: 5px solid #f8bbd0;
+      border-radius: 50%;
+      box-shadow: 0 0 15px #ec407a;
+      animation: heartbeat 1.5s infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .typed-text {
+      color: #880e4f;
+      font-size: 1.3em;
+      height: 80px;
+      margin: 20px auto;
+    }
+
+    .reveal-button {
+      background: #e91e63;
+      border: none;
+      color: white;
+      padding: 12px 25px;
+      font-size: 1em;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+
+    .reveal-button:hover {
+      background: #ad1457;
+    }
+
+    .surprise {
+      display: none;
+      margin-top: 30px;
+      font-size: 1.2em;
+      color: #6a1b9a;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .music-controls {
+      margin-top: 20px;
+    }
+
+    .music-controls button {
+      background-color: #f06292;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    .floating {
+      position: fixed;
+      z-index: 1;
+      width: 100px;
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    .balloons {
+      top: 0;
+      right: 0;
+      animation: floatUp 10s infinite;
+    }
+
+    .sparkles {
+      bottom: 0;
+      left: 0;
+      animation: floatDown 10s infinite;
+    }
+
+    .flowers {
+      top: 30%;
+      left: 0;
+      animation: floatSide 6s infinite alternate;
+    }
+
+    .pigeons {
+      bottom: 20%;
+      right: 10%;
+      animation: flyAcross 15s linear infinite;
+    }
+
+    .hearts {
+      top: 50%;
+      left: 50%;
+      animation: floatHeart 8s ease-in-out infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes floatDown {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(20px); }
+      100% { transform: translateY(0); }
+    }
+
+    @keyframes floatSide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(30px); }
+    }
+
+    @keyframes flyAcross {
+      0% { transform: translateX(100vw); }
+      100% { transform: translateX(-100vw); }
+    }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      50% { transform: translateY(-50px) scale(1.1); opacity: 0.7; }
+      100% { transform: translateY(-100px) scale(1.2); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media(max-width: 600px) {
+      h1 { font-size: 2em; }
+      .typed-text, .surprise { font-size: 1em; padding: 0 10px; }
+      .photo { width: 140px; height: 140px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Floating Decor -->
+<img src="balloons.png" class="floating balloons" alt="balloons" />
+<img src="sparkles.png" class="floating sparkles" alt="sparkles" />
+<img src="flowers.png" class="floating flowers" alt="flowers" />
+<img src="hearts.png" class="floating hearts" alt="hearts" />
+
+<div class="container">
+  <h1>Happy Birthday Zarii! 🎉</h1>
+  <div class="photo"></div>
+
+  <div class="typed-text" id="typedText"></div>
+
+  <button class="reveal-button" onclick="reveal()">🎁 Reveal Message</button>
+
+  <div class="surprise" id="surprise">
+    Apko wish kerny ky liye mery words kafi nhi hongy is liye it's a gesture from my side to wish you this birthday. 💖<br>
+    Apky liye ehsastat ko explain nhi karunga kiu ky wo shyd sy ap janti hongi. Just apko duaen donga dher sarii ✨<br>
+    Allah ki ladli, the best person of my life, Hamesha khush rahein, kabhi mayus na hon 💫<br>
+    Happy birthday BESTIEE, the PUREST SOUL 💐
+  </div>
+
+  <div class="music-controls">
+    <button onclick="toggleMusic()">🎵 Play / Pause Music</button>
+  </div>
+
+  <audio id="bgMusic" autoplay loop>
+    <source src="birthday.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+<script>
+  const messages = [
+    "Wishing the most adorable, funny, kind, and dramatic soul the happiest 21st! 💕",
+    "May this small gesture brings smile to your face and make you bloom ✨",
+    "From a friend who will always be there for you in every situation to make you feel special. 💫"
+  ];
+
+  let i = 0;
+  let j = 0;
+  let currentMessage = "";
+  let isDeleting = false;
+  const typedText = document.getElementById("typedText");
+
+  function typeLoop() {
+    if (i < messages.length) {
+      if (!isDeleting && j <= messages[i].length) {
+        currentMessage = messages[i].substring(0, j++);
+        typedText.innerHTML = currentMessage;
+        setTimeout(typeLoop, 60);
+      } else if (isDeleting && j >= 0) {
+        currentMessage = messages[i].substring(0, j--);
+        typedText.innerHTML = currentMessage;
+        setTimeout(typeLoop, 30);
+      } else {
+        if (!isDeleting) {
+          isDeleting = true;
+          setTimeout(typeLoop, 1000);
+        } else {
+          isDeleting = false;
+          i++;
+          j = 0;
+          setTimeout(typeLoop, 500);
+        }
+      }
+    }
+  }
+
+  typeLoop();
+
+  function reveal() {
+    document.getElementById("surprise").style.display = "block";
+  }
+
+  function toggleMusic() {
+    const music = document.getElementById("bgMusic");
+    if (music.paused) music.play();
+    else music.pause();
+  }
+</script>
+
+</body>
+</html>
